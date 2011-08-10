@@ -1,7 +1,51 @@
-name: PoisonFood
+name: MorePoisonFood
 main: com.github.The414s.PoisonFood.PoisonFood
-version: 1.2
+version: 1.2.5
 website: the414s.github.com
-authors:
-  - The414s
-description: Lets Poison Some Food
+authors: [The414s, zhuowei]
+description: Let's Poison Some Food
+permissions:
+  PoisonFood.immunity.cake:
+    description: Prevents the player from being poisoned by cake
+
+  PoisonFood.immunity.cookie:
+    description: Prevents the player from being poisoned by cookies
+
+  PoisonFood.immunity.rawFish:
+    description: Prevents the player from being poisoned by raw fish
+
+  PoisonFood.immunity.cookedFish:
+    description: Prevents the player from being poisoned by cooked fish
+
+  PoisonFood.immunity.rawPork:
+    description: Prevents the player from being poisoned by raw pork
+
+  PoisonFood.immunity.cookedPork:
+    description: Prevents the player from being poisoned by cooked pork
+
+  PoisonFood.immunity.apple:
+    description: Prevents the player from being poisoned by red apples
+
+  PoisonFood.immunity.goldenApple:
+    description: Prevents the player from being poisoned by golden apples
+
+  PoisonFood.immunity.soup:
+    description: Prevents the player from being poisoned by mushroom stew
+
+  PoisonFood.immunity.bread:
+    description: Prevents the player from being poisoned by bread
+
+  PoisonFood.immunity.*:
+    description: Prevents the player from getting food poisoning
+    children:
+      PoisonFood.immunity.cake: true
+      PoisonFood.immunity.cookie: true
+      PoisonFood.immunity.rawFish: true
+      PoisonFood.immunity.cookedFish: true
+      PoisonFood.immunity.rawPork: true
+      PoisonFood.immunity.cookedPork: true
+      PoisonFood.immunity.apple: true
+      PoisonFood.immunity.goldenApple: true
+      PoisonFood.immunity.soup: true
+      PoisonFood.immunity.bread: true
+

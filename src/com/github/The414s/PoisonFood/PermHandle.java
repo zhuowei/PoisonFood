@@ -3,9 +3,6 @@ package com.github.The414s.PoisonFood;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.nijiko.permissions.PermissionHandler;
-import com.nijikokun.bukkit.Permissions.Permissions;
-
 public class PermHandle {
 
 	protected static boolean cake;
@@ -19,8 +16,7 @@ public class PermHandle {
 	protected static boolean soup;
 	protected static boolean bread;
 
-	private static PermissionHandler pm;
-	private static boolean loadedP = false;
+	private static boolean loadedP = true; //bukkit builtin permissions update
 	private static boolean loaded = false;
 	private static PoisonFood plugin;
 
@@ -40,16 +36,16 @@ public class PermHandle {
 			load();
 		}
 		if (loadedP) {
-			cake = pm.has(player, "PoisonFood.immunity.cake");
-			cookie = pm.has(player, "PoisonFood.immunity.cookie");
-			rawFish = pm.has(player, "PoisonFood.immunity.rawFish");
-			cookedFish = pm.has(player, "PoisonFood.immunity.cookedFish");
-			rawPork = pm.has(player, "PoisonFood.immunity.rawPork");
-			cookedPork = pm.has(player, "PoisonFood.immunity.cookedPork");
-			apple = pm.has(player, "PoisonFood.immunity.apple");
-			goldenApple = pm.has(player, "PoisonFood.immunity.goldenApple");
-			soup = pm.has(player, "PoisonFood.immunity.soup");
-			bread = pm.has(player, "PoisonFood.immunity.bread");
+			cake = player.hasPermission("PoisonFood.immunity.cake");
+			cookie = player.hasPermission("PoisonFood.immunity.cookie");
+			rawFish = player.hasPermission("PoisonFood.immunity.rawFish");
+			cookedFish = player.hasPermission("PoisonFood.immunity.cookedFish");
+			rawPork = player.hasPermission("PoisonFood.immunity.rawPork");
+			cookedPork = player.hasPermission("PoisonFood.immunity.cookedPork");
+			apple = player.hasPermission("PoisonFood.immunity.apple");
+			goldenApple = player.hasPermission("PoisonFood.immunity.goldenApple");
+			soup = player.hasPermission("PoisonFood.immunity.soup");
+			bread = player.hasPermission("PoisonFood.immunity.bread");
 		} else {
 			cake = false;
 			cookie = false;
@@ -68,18 +64,5 @@ public class PermHandle {
 	private static void setupPermissions() {
 		
 		plugin.log.info("[PoisonFood] Loading permissions");
-		Plugin test = plugin.getServer().getPluginManager()
-				.getPlugin("Permissions");
-		
-		if (pm == null) {
-			if (test != null) {
-				pm = ((Permissions) test).getHandler();
-				loadedP = true;
-				plugin.log.info("[PoisonFood] Permissions loaded");
-			} else {
-				loadedP = false;
-				plugin.log.info("[PoisonFood] Permissions not found");
-			}
-		}
 	}
 }
