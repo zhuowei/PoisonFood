@@ -146,7 +146,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("RawPork.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("RawPork.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -176,7 +176,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("CookedPork.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("CookedPork.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -205,7 +205,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("Bread.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("Bread.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -233,7 +233,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("RawFish.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("RawFish.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -263,7 +263,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("CookedFish.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("CookedFish.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -291,7 +291,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("Soup.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("Soup.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -319,7 +319,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("Apple.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("Apple.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -348,7 +348,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("GoldenApple.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("GoldenApple.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -376,7 +376,7 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 					return;
 				}
 
-				if (roll <= c.getInt("Cookie.Chance", 0)) {
+				if (isPoisoned(event.getItem()) || roll <= c.getInt("Cookie.Chance", 0)) {
 					plugin.debug.info(" lessen health and stack");
 					event.setCancelled(true);
 					ItemStack stack = event.getPlayer().getItemInHand();
@@ -407,5 +407,9 @@ public class PoisonFoodPlayerListener extends PlayerListener {
 			plugin.debug.info("############################################");
 			e.printStackTrace();
 		}
+	}
+
+	private boolean isPoisoned(ItemStack stack) {
+		return stack.getDurability() == plugin.poisonMetadata;
 	}
 }
